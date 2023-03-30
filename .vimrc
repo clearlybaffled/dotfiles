@@ -9,8 +9,6 @@
 " --------
 
 filetype off                    " Avoid a Vim/Pathogen bug
-call pathogen#helptags()
-call pathogen#infect()
 
 set nocompatible                " Don't maintain compatibility with vi
 syntax on                       " Highlight known syntaxes
