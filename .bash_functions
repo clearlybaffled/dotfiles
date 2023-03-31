@@ -5,16 +5,16 @@ function git {
   local dotfiles_args="--git-dir=$HOME/.cfg/ --work-tree=$HOME"
   if [[ $(pwd) = $HOME ]]
   then
-    $GIT $dotfiles_args $@
+    $GIT $dotfiles_args "$@"
   else
     pushd $HOME >/dev/null
     local dirs=$($GIT --git-dir=$HOME/.cfg --work-tree=$HOME ls-files | xargs -n 1 dirname | sort | uniq  )
     popd >/dev/null
     if $(echo $dirs  | grep -Fq ${PWD#"$HOME/"}) # TODO: Fix for root dir case
     then 
-      $GIT $dotfiles_args $@
+      $GIT $dotfiles_args "$@"
     else
-      $GIT $@
+      $GIT "$@"
     fi
   fi
 }
