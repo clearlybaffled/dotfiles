@@ -1,0 +1,27 @@
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    required = true
+[credential]
+    helper = store
+[push]
+    default = simple
+[alias]
+    aa = add --all
+    b = branch
+    ba = branch --all
+    changes = diff --name-status
+    c = commit
+    ca = commit --all
+    camend = commit --amend
+    cm = commit -m
+    cma = commit --all -m
+    co = checkout
+    dic = diff --cached
+    dis = diff --stat
+    l = log --pretty=oneline --abbrev-commit --graph --decorate
+    s = status
+    undo = reset --soft HEAD^
+[user]
+    name = clearlybaffled
+    email = clearlybaffled120@gmail.com
