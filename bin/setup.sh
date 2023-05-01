@@ -11,6 +11,7 @@ $GIT config status.showUntrackedFiles no
 $GIT config --local include.path $HOME/git/.gitconfig
 $GIT submodule update --init --remote
 $GIT remote set-url origin $REPO
+ln -sf git/.gitconfig .
 
 set +e
 
