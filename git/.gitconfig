@@ -19,7 +19,8 @@
     co = checkout
     dic = diff --cached
     dis = diff --stat
-    l = log --pretty=oneline --abbrev-commit --graph --decorate
+    l = log --all --graph --color --date=short --pretty"format:%C(auto)%h (%an) [%ad, %ar] %s %d"
+    pf = push --force
     s = status
     undo = reset --soft HEAD^
 [user]
