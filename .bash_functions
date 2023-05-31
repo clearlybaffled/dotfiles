@@ -19,4 +19,16 @@ function git {
   fi
 }
 
+function kubectlgetall {
+  for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+    # echo "Resource:" $i
+    kubectl -n ${1} get --ignore-not-found --show-kind ${i}
+  done
+}
+
+# short alias to set/show context/namespace (only works for bash and bash-compatible shells, current context to be set before using kn to set namespace)
+# https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
+alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
+
 # vim: ft=bash ts=2 sw=2 et

@@ -186,4 +186,4 @@ alias vi="vim"
 # CDPATH=:$HOME
 
 
-
+export KUBECONFIG=$HOME/.kube/config
