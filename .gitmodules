@@ -92,3 +92,9 @@
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/pack/plugin/opt/YouCompleteMe
 	url = https://github.com/valloric/YouCompleteMe
+[submodule ".repo/kube-ps1"]
+	path = .repo/kube-ps1
+	url = https://github.com/jonmosco/kube-ps1.git
+[submodule ".repo/bash-git-prompt"]
+	path = .repo/bash-git-prompt
+	url = https://github.com/magicmonty/bash-git-prompt.git
