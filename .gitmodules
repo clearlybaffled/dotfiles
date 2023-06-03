@@ -98,3 +98,6 @@
 [submodule ".repo/bash-git-prompt"]
 	path = .repo/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
+[submodule "/home/jared/.repo/oh-my-bash"]
+	path = /home/jared/.repo/oh-my-bash
+	url = https://github.com/ohmybash/oh-my-bash.git
