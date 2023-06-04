@@ -79,8 +79,8 @@ if [ -f "$HOME/.repo/bash-git-prompt/gitprompt.sh" ]; then
   # as last entry source the gitprompt script
   # GIT_PROMPT_THEME=Custom # use custom theme specified in file GIT_PROMPT_THEME_FILE (default ~/.git-prompt-colors.sh)
   # GIT_PROMPT_THEME_FILE=~/.git-prompt-colors.sh
-  GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
-  source $HOME/.repo/bash-git-prompt/gitprompt.sh
+  # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+#  source $HOME/.repo/bash-git-prompt/gitprompt.sh
 fi
 
 if [ "$color_prompt" = yes ]; then
