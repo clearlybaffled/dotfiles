@@ -26,3 +26,6 @@
 [user]
     name = clearlybaffled
     email = clearlybaffled120@gmail.com
+
+[include]
+  path = ~/.gitconfig-local
