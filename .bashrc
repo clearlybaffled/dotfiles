@@ -214,3 +214,8 @@ alias vi="vim"
 
 
 export KUBECONFIG=$HOME/.kube/config
+
+# silence direnv's output; run `direnv status` to check
+export DIRENV_LOG_FORMAT=
+eval "$(direnv hook bash)"
+export GPG_TTY=$(tty)

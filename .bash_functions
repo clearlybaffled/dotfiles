@@ -32,3 +32,23 @@ alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config curr
 alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 
 # vim: ft=bash ts=2 sw=2 et
+
+function patchfin {
+  [ "$1" ] && \
+    kubectl get $1 -o name \
+      | xargs -I{} kubectl patch {} --type json --patch='[ { "op": "remove", "path": "/metadata/finalizers" } ]'
+}
+
+function unclaim {
+  for pv in "$@"
+  do
+    kubectl patch pv $pv --type=json -p '[{"op":"remove","path":"/spec/claimRef/uid"},{"op":"remove","path":"/spec/claimRef/resourceVersion"}]'
+  done
+}
+
+function wipeclaim {
+  for pv in "$@"
+  do
+   kubectl patch pv $pv --type=json -p '[{"op":"remove","path":"/spec/claimRef"}]'
+  done
+}
