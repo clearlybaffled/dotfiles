@@ -14,6 +14,7 @@
     c = commit
     ca = commit --all
     camend = commit --amend
+    can = commit --amend --no-edit
     cm = commit -m
     cma = commit --all -m
     co = checkout
@@ -22,7 +23,9 @@
     l = log --all --graph --color --date=short --format='%C(auto)%h (%an) [%ad, %ar] %s %d'
     pf = push --force
     s = status
+    ps = -p status
     undo = reset --soft HEAD^
+    name = !basename `git rev-parse --show-toplevel`
 [user]
     name = clearlybaffled
     email = clearlybaffled120@gmail.com

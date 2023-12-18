@@ -1,5 +1,4 @@
 # Hotwire git command to handle the bare dotfile repo in $HOME
-
 function git {
   local GIT=/usr/bin/git
   local dotfiles_args="--git-dir=$HOME/.cfg/ --work-tree=$HOME"
@@ -19,6 +18,10 @@ function git {
   fi
 }
 
+function git_current_branch() {
+  git symbolic-ref HEAD 2> /dev/null | sed -e 's/refs\/heads\///'
+}
+
 function kubectlgetall {
   for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
     # echo "Resource:" $i
@@ -29,9 +32,8 @@ function kubectlgetall {
 # short alias to set/show context/namespace (only works for bash and bash-compatible shells, current context to be set before using kn to set namespace)
 # https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
-alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
+alias kn='f() { [ "$1" ] && kubectl get ns $1 >/dev/null && (kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ) ; } ; f'
 
-# vim: ft=bash ts=2 sw=2 et
 
 function patchfin {
   [ "$1" ] && \
@@ -52,3 +54,5 @@ function wipeclaim {
    kubectl patch pv $pv --type=json -p '[{"op":"remove","path":"/spec/claimRef"}]'
   done
 }
+
+# vim: ft=bash ts=2 sw=2 et
